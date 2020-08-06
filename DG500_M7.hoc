@@ -19,6 +19,13 @@ nmcell = 15
 nhcell = 6
 npp = 1
 
+print "Granule Cell #s range from:", 0, " to ", ngcell - 1
+print "Basket Cell #s range from:", ngcell, " to ", ngcell + nbcell - 1
+print "Mossy Cell #s range from:", ngcell + nbcell, " to ", ngcell + nbcell + nmcell - 1
+print "Granule Cell #s range from:", ngcell + nbcell + nmcell, " to ", ngcell + nbcell + nmcell + nhcell - 1
+print "Stimulating cell # should be: ", ngcell + nbcell + nmcell + nhcell
+
+
 // read in the cell definitions
 xopen("cells.hoc")
 
