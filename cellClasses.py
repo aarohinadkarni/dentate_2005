@@ -1117,6 +1117,99 @@ class HIPPCell(modelcell):
 		# Total of 8 synapses butt Viji's doc says there should be 12...
 		# Total of 12 synapses 	0-3 PP; 	4-7 GC; 	8-11 MC	
 
+class NewHIPPCell(HIPPCell):
+    def __init__(self):
+        super().__init__()
+        self.addSynapses()
+        
+    def addSynapses(self): # Add 4 more to get to 12
+        self.pre_list = []
+        # Assumed PP(AMPA) syn to mid dend similar to CA3>int Aaron
+        syn_ = h.Exp2Syn(self.hcdend1[1](0.5))
+        self.pre_list.append(syn_) 
+        syn_.tau1 = .9
+        syn_.tau2 = 3.6
+        syn_.e = -0 
+        
+        # Assumed PP(AMPA) syn to mid dend similar to CA3>int Aaron
+        syn_ = h.Exp2Syn(self.hcdend2[1](0.5))
+        self.pre_list.append(syn_) 
+        syn_.tau1 = .9
+        syn_.tau2 = 3.6
+        syn_.e = -0 
+
+        # Assumed PP(AMPA) syn to mid dend similar to CA3>int Aaron
+        syn_ = h.Exp2Syn(self.hcdend3[1](0.5))
+        self.pre_list.append(syn_) 
+        syn_.tau1 = .9
+        syn_.tau2 = 3.6
+        syn_.e = -0 
+        
+        # Assumed PP(AMPA) syn to mid dend similar to CA3>int Aaron
+        syn_ = h.Exp2Syn(self.hcdend4[1](0.5))
+        self.pre_list.append(syn_) 
+        syn_.tau1 = .9
+        syn_.tau2 = 3.6
+        syn_.e = 0 
+
+        # GC(AMPA) syn to prox dend similar to GC>BC
+        syn_ = h.Exp2Syn(self.hcdend1[0](0.5))
+        self.pre_list.append(syn_)  
+        syn_.tau1 = 0.3
+        syn_.tau2 = 0.6
+        syn_.e = 0
+        
+        # GC(AMPA) syn to prox dend similar to GC>BC
+        syn_ = h.Exp2Syn(self.hcdend2[0](0.5))
+        self.pre_list.append(syn_) 
+        syn_.tau1 = 0.3
+        syn_.tau2 = 0.6
+        syn_.e = 0
+       
+        # GC(AMPA) syn to prox dend similar to GC>BC
+        syn_ = h.Exp2Syn(self.hcdend3[0](0.5))
+        self.pre_list.append(syn_) 
+        syn_.tau1 = 0.3
+        syn_.tau2 = 0.6
+        syn_.e = 0
+       
+        # GC(AMPA) syn to prox dend similar to GC>BC
+        syn_ = h.Exp2Syn(self.hcdend4[0](0.5))
+        self.pre_list.append(syn_) 
+        syn_.tau1 = 0.3
+        syn_.tau2 = 0.6
+        syn_.e = 0
+        
+        # converting this one to a hyperpolarizing synapse
+        syn_ = h.Exp2Syn(self.hcdend1[1](0.5))
+        self.pre_list.append(syn_) 
+        syn_.tau1 = .9
+        syn_.tau2 = 3.6
+        syn_.e = -70 # diff than model template I took it from, that seems to be wrong
+        
+        # converting this one to a hyperpolarizing synapse
+        syn_ = h.Exp2Syn(self.hcdend2[1](0.5))
+        self.pre_list.append(syn_) 
+        syn_.tau1 = .9
+        syn_.tau2 = 3.6
+        syn_.e = -70 # diff than model template I took it from, that seems to be wrong
+
+        # converting this one to a hyperpolarizing synapse
+        syn_ = h.Exp2Syn(self.hcdend3[1](0.5))
+        self.pre_list.append(syn_) 
+        syn_.tau1 = .9
+        syn_.tau2 = 3.6
+        syn_.e = -70 # diff than model template I took it from, that seems to be wrong
+        
+        # converting this one to a hyperpolarizing synapse
+        syn_ = h.Exp2Syn(self.hcdend4[1](0.5))
+        self.pre_list.append(syn_) 
+        syn_.tau1 = .9
+        syn_.tau2 = 3.6
+        syn_.e = -70 # diff than model template I took it from, that seems to be wrong
+
+		# Total of 8 synapses butt Viji's doc says there should be 12...
+		# Total of 12 synapses 	0-3 PP; 	4-7 GC; 	8-11 MC	        
 
 class PPstim(modelcell):  
     """ Stim cell with stim attribute that references a RegnStim point process """

@@ -19,6 +19,9 @@ nmcell = 15
 nhcell = 6
 npp = 1
 
+// read in the cell definitions
+xopen("cells.hoc")
+
 //###############################################################################################################
 //############## CONNECTING THE CELLS  #############################
 	
@@ -94,11 +97,12 @@ objref killMC
 
 objref rdsynb, rdsyna, rdgc2hc, rdgc2bc, rdgc2mc, rdbc2gc, rdbc2bc, rdbc2mc, deadMC
 objref rdmc2gc1, rdmc2gc2, rdmc2bc, rdmc2mc, rdmc2mc1, rdmc2hc, rdhc2gc, rdhc2bc, rdhc2mc, rdgc2gc
-ropen("/proc/uptime")		// get a seed  that is changing based on the processing time
-	 {			
- 	rseed = fscan()		// so simulation will not start with the same seed
-	ropen()		
-	}
+//ropen("/proc/uptime")		// get a seed  that is changing based on the processing time
+//	 {			
+// 	rseed = fscan()		// so simulation will not start with the same seed
+//	ropen()		
+//	}
+rseed = 7890
 //************************************  GC  ***********************************************
 rdgc2bc = new Random(rseed)			// use for syn.connections 
 proc new_rdgc2bc() {rdgc2bc.discunif(-1,1)}	// range is based on spread of connections on either side of RING- precell loc =0
